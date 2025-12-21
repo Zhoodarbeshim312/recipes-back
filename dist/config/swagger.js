@@ -15,6 +15,42 @@ const options = {
             version: "1.0.0",
             description: "Express + Prisma + TypeScript API documentation",
         },
+        // ✅ ДОБАВЛЯЕМ components
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
+            schemas: {
+                Recipe: {
+                    type: "object",
+                    properties: {
+                        title: { type: "string" },
+                        description: { type: "string" },
+                        images: {
+                            type: "array",
+                            items: { type: "string" },
+                        },
+                        ingredients: {
+                            type: "array",
+                            items: { type: "string" },
+                        },
+                        instructions: {
+                            type: "array",
+                            items: { type: "string" },
+                        },
+                        nutrition: { type: "object" },
+                        fill: { type: "integer" },
+                        cookingTime: { type: "string" },
+                        preparationTime: { type: "string" },
+                        category: { type: "string" },
+                    },
+                },
+            },
+        },
     },
     apis: [
         path_1.default.join(__dirname, "../routes/**/*.ts"),
