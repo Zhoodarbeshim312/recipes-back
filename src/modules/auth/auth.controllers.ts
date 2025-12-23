@@ -5,8 +5,8 @@ import { prisma } from "../../config/prisma";
 
 const register = async (req: Request, res: Response) => {
   try {
-    const { avatar, name, lastName, email, password } = req.body;
-    if (!email || !name || !password || !lastName) {
+    const { avatar, name, email, password } = req.body;
+    if (!email || !name || !password) {
       return res.status(400).json({
         success: false,
         message: "Все поля (name, email, password) обязательны!",
@@ -29,7 +29,6 @@ const register = async (req: Request, res: Response) => {
       data: {
         avatar,
         name,
-        lastName,
         email,
         password: hashedPassword,
       },
@@ -44,7 +43,6 @@ const register = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       avatar: user.avatar,
-      lastName: user.lastName,
     });
   } catch (error) {
     console.error("Register error:", error);
@@ -92,7 +90,6 @@ const login = async (req: Request, res: Response) => {
       email: user.email,
       name: user.name,
       avatar: user.avatar,
-      lastName: user.lastName,
     });
   } catch (error) {
     console.error("Login error:", error);
