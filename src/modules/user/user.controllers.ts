@@ -13,7 +13,6 @@ const getUserById = async (req: Request, res: Response) => {
         id: true,
         avatar: true,
         name: true,
-        lastName: true,
         email: true,
         createdAt: true,
         updatedAt: true,
